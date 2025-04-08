@@ -1,0 +1,39 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>UXTools (Animation)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            canvas {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="2240" height="950"></canvas>
+
+        <script src="https://unpkg.com/@rive-app/canvas"></script>
+        <script>
+            const r = new rive.Rive({
+                src: "./anim_v1.riv",
+                canvas: document.getElementById("canvas"),
+                autoplay: true,
+                artboard: "3",
+                stateMachines: "state_machine",
+                onLoad: () => {
+                    r.resizeDrawingSurfaceToCanvas();
+                },
+            });
+
+            window.addEventListener("resize", () => {
+                r.resizeDrawingSurfaceToCanvas();
+            });
+        </script>
+    </body>
+</html>
